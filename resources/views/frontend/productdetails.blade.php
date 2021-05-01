@@ -1,3 +1,9 @@
+@section('product_details')
+    active
+@endsection
+@section('title')
+  Product | Details
+@endsection
 @extends('layouts.frontend_app')
 @section('frontend_content')
              <!-- .breadcumb-area start -->
@@ -305,54 +311,7 @@
                     </div>
                 </div>
             </div> --}}
-            <div class="row">
-                @foreach ($products as $product)
-                <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="featured-product-wrap">
-                        <div class="featured-product-img">
-                            <img src="{{ asset('frontend_asset') }}/images/product/1.jpg" alt="">
-                        </div>
-                        <div class="featured-product-content">
-                            <div class="row">
-                                <div class="col-7">
-                                    <h3><a href="shop.html">{{ $productdetails->product_name }}</a></h3>
-                                    <p>${{ $productdetails->product_price }}</p>
-                                </div>
-                                <div class="col-5 text-right">
-                                    <ul>
-                                        <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        <li><a href="cart.html"><i class="fa fa-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                @foreach ($products as $product)
-                <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="featured-product-wrap">
-                        <div class="featured-product-img">
-                            <img src="{{ asset('frontend_asset') }}/images/product/1.jpg" alt="">
-                        </div>
-                        <div class="featured-product-content">
-                            <div class="row">
-                                <div class="col-7">
-                                    <h3><a href="shop.html">{{ $product->product_name }}</a></h3>
-                                    <p>${{ $product->product_price }}</p>
-                                </div>
-                                <div class="col-5 text-right">
-                                    <ul>
-                                        <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        <li><a href="cart.html"><i class="fa fa-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
+            @include('frontend.include.product')
         </div>
     </div>
     <!-- featured-product-area end -->

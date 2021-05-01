@@ -1,3 +1,9 @@
+@section('checkout')
+    active
+@endsection
+@section('title')
+  checkout
+@endsection
 @extends('layouts.frontend_app')
 @section('frontend_content')
          <!-- .breadcumb-area start -->

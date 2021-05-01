@@ -12,7 +12,13 @@
       </div><!-- sl-page-title -->
         <div class="container">
           <div class="row">
+              <div class="col-lg-12">
+                <div class="card ">
+                    <canvas id="dashboard_chart_1"></canvas>
+                  </div>
+              </div>
             <div class="col-lg-12">
+
               @if (session('user_delete_status'))
                   <div class="alert alert-danger">
                     {{ session('user_delete_status') }}
@@ -35,7 +41,7 @@
                     <td>{{ $user->created_at }}</td>
                     <td><a href="{{ route('user.delete',$user->id) }}" class="btn btn-danger">delete</a></td>
                   </tr>
-                       
+
                   @endforeach
                 </tbody>
               </table>
@@ -46,18 +52,32 @@
   </div><!-- sl-mainpanel -->
 @endsection
 @section('footer_scripts')
-<script type="text/javascript">
-  $(document).ready(function(){
-      $('#product_table').DataTable();
-      ClassicEditor
-                          .create( document.querySelector( '#product_long_description' ) )
-                          .then( editor => {
-                                  console.log( editor );
-                          } )
-                          .catch( error => {
-                                  console.error( error );
-                          } );
-  })
-</script>
- 
-@endsection
+        <script>
+          var ctx = document.getElementById('dashboard_chart_1').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'doughnut',
+
+    // The data for our dataset
+    data: {
+        labels: ['paid', 'unpaid', 'cancel'],
+        datasets: [{
+            label: 'Ironman',
+            backgroundColor: [
+              'green',
+              'yellow',
+              'red'
+            ],
+            borderColor: 'red',
+            data: [10, 20, 15]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
+
+});
+        </script>
+    @endsection

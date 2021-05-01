@@ -1,3 +1,9 @@
+@section('contact')
+    active
+@endsection
+@section('title')
+  Contact Us
+@endsection
 @extends('layouts.frontend_app')
 @section('frontend_content')
     <!-- .breadcumb-area start -->
@@ -33,6 +39,13 @@
                             <li>{{ session('success_status') }}</li>
                         </div>
                         @endif
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
                         <div class="cf-msg"></div>
                         <form action="{{ route('contact.store') }}" method="post" id="cf">
                             @csrf

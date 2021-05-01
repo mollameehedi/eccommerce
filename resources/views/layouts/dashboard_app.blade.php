@@ -11,6 +11,7 @@
     <!-- vendor css -->
 
     <link href="{{ asset('dashboard_asset') }}/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="{{ asset('dashboard_asset') }}/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="{{ asset('dashboard_asset') }}/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="{{ asset('dashboard_asset') }}/lib/highlightjs/github.css" rel="stylesheet">
@@ -39,8 +40,14 @@
             <span class="menu-item-label">Dashboard</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
+        <a href="{{ route('order.index') }}" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+            <span class="menu-item-label">Orders</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
 
-        <a href="#" class="sl-menu-link">
+        <a href="" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
             <span class="menu-item-label">Charts</span>
@@ -55,7 +62,7 @@
           <li class="nav-item"><a href="chart-sparkline.html" class="nav-link">Sparkline</a></li>
         </ul>
 
-        <a href="index.html" class="sl-menu-link">
+        <a href="{{ route('contact.message') }}" class="sl-menu-link">
             <div class="sl-menu-item">
               <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
               <span class="menu-item-label">Contact Messages</span>
@@ -125,6 +132,7 @@
 <script src="{{ asset('dashboard_asset') }}/lib/popper.js/popper.js"></script>
 <script src="{{ asset('dashboard_asset') }}/lib/bootstrap/bootstrap.js"></script>
 <script src="{{ asset('dashboard_asset') }}/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{{ asset('dashboard_asset') }}/lib/datatables/jquery.dataTables.js"></script>
 <script src="{{ asset('dashboard_asset') }}/lib/datatables-responsive/dataTables.responsive.js"></script>
 

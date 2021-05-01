@@ -30,6 +30,7 @@ Route::post('profile/password/post', 'ProfileController@profilepasswordpost')->n
 // FrontendController route start
 Route::get('/', 'FrontendController@index')->name('/');
 Route::get('about', 'FrontendController@about')->name('about');
+Route::get('shope', 'FrontendController@shop')->name('shope');
 Route::get('product/details/{id}', 'FrontendController@productdetails')->name('product.details');
 Route::get('customer/register', 'FrontendController@customerregister')->name('customer.register');
 Route::get('customer/login', 'FrontendController@customerlogin')->name('customer.login');
@@ -47,8 +48,26 @@ Route::post('cart/update', 'CartController@update')->name('cart.update');
 
 // Customer route start
 Route::get('customer/dashboard', 'CustomerController@dashboard')->name('customer.dashbaord');
+Route::get('customer/invoice/download/{id}', 'CustomerController@customerinvoicedownload')->name('customer.invoice.download');
 
 
 // checkout controller route start
 Route::get('checkout','CheckoutController@index')->name('checkout.index');
 Route::post('checkout/store','CheckoutController@store')->name('checkout.store');
+
+
+// Contact Messages controller route start
+Route::get('deshboard/contact/messages', 'Contact_message@contactmessage')->name('contact.message');
+Route::get('deshboard/contact/messages/delete/{id}', 'Contact_message@contactmessagesdelete')->name('contact.messages.delete');
+Route::get('deshboard/contact/messages/view/{id}', 'Contact_message@contactmessagesview')->name('contact.messages.view');
+
+// stripecontroller  route start
+Route::get('stripe', 'StripePaymentController@stripe');
+Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
+
+
+
+// Order controller route starty
+Route::resource('order', 'OrderController');
+Route::get('order/cancel/{id}', 'OrderController@ordercancel')->name('order.cancel');
+

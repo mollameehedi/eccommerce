@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Tohoney - Login</title>
+    <title>@yield("title")</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{{ asset('frontend_asset') }}/images/favicon.png">
@@ -72,18 +72,16 @@
                               <ul class="dropdown_style">
                                   <li><a href="{{ route('customer.login') }}">Login</a></li>
                                   <li><a href="{{ route('customer.register') }}">Register</a></li>
-                                  <li><a href="cart.html">Cart</a></li>
-                                  <li><a href="checkout.html">Checkout</a></li>
-                                  <li><a href="wishlist.html">wishlist</a></li>
+                                  <li><a href="{{ route('cart.index') }}">Cart</a></li>
                               </ul>
                           </li>
-                          <li><a href="{{ route('customer.register') }}">
+                          <li><a href="{{ route('customer.dashbaord') }}">
                             @auth
                                         {{ Auth::user()->name }}
                                     @endauth
                                     @guest
 
-                                    My Account
+                                    Register / Login
                                     @endguest
                         </a></li>
                       </ul>
@@ -96,7 +94,7 @@
               <div class="row">
                   <div class="col-lg-3 col-md-7 col-sm-6 col-6">
                       <div class="logo">
-                          <a href="index.html">
+                          <a href="{{ route('/') }}">
                       <img src="{{ asset('frontend_asset') }}/images/logo.png" alt="">
                       </a>
                       </div>
@@ -104,46 +102,16 @@
                   <div class="col-lg-7 d-none d-lg-block">
                       <nav class="mainmenu">
                           <ul class="d-flex">
-                              <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                              <li><a href="{{ route('about') }}">About</a></li>
-                              <li><a href="{{ route('contact') }}">Contact</a></li>
+                              <li class="@yield('home')"><a href="{{ url('/') }}">Home</a></li>
+                              <li class="@yield('about')"><a href="{{ route('about') }}">About</a></li>
+                              <li class="@yield('shope')"><a href="{{ route('shope') }}">Shope</a></li>
+                              <li class="@yield('contact')"><a href="{{ route('contact') }}">Contact</a></li>
                           </ul>
                       </nav>
                   </div>
                   <div class="col-md-4 col-lg-2 col-sm-5 col-4">
                       <ul class="search-cart-wrapper d-flex">
-                          <li class="search-tigger"><a href="javascript:void(0);"><i class="flaticon-search"></i></a></li>
-                          <li>
-                              <a href="javascript:void(0);"><i class="flaticon-like"></i> <span>2</span></a>
-                              <ul class="cart-wrap dropdown_style">
-                                  <li class="cart-items">
-                                      <div class="cart-img">
-                                          <img src="{{ asset('frontend_asset') }}/images/cart/1.jpg" alt="">
-                                      </div>
-                                      <div class="cart-content">
-                                          <a href="cart.html">Pure Nature Product</a>
-                                          <span>QTY : 1</span>
-                                          <p>$35.00</p>
-                                          <i class="fa fa-times"></i>
-                                      </div>
-                                  </li>
-                                  <li class="cart-items">
-                                      <div class="cart-img">
-                                          <img src="{{ asset('frontend_asset') }}/images/cart/3.jpg" alt="">
-                                      </div>
-                                      <div class="cart-content">
-                                          <a href="cart.html">Pure Nature Product</a>
-                                          <span>QTY : 1</span>
-                                          <p>$35.00</p>
-                                          <i class="fa fa-times"></i>
-                                      </div>
-                                  </li>
-                                  <li>Subtotol: <span class="pull-right">$70.00</span></li>
-                                  <li>
-                                      <button>Check Out</button>
-                                  </li>
-                              </ul>
-                          </li>
+
                           <li>
                               <a href="javascript:void(0);"><i class="flaticon-shop"></i> <span>{{ cart_count() }}</span></a>
                               <ul class="cart-wrap dropdown_style">
@@ -192,37 +160,11 @@
                   <div class="row">
                       <div class="col-12 d-block d-lg-none">
                           <ul class="metismenu">
-                              <li><a href="index.html">Home</a></li>
-                              <li><a href="about.html">About</a></li>
-                              <li class="sidemenu-items">
-                                  <a class="has-arrow" aria-expanded="false" href="javascript:void(0);">Shop </a>
-                                  <ul aria-expanded="false">
-                                      <li><a href="shop.html">Shop Page</a></li>
-                                      <li><a href="single-product.html">Product Details</a></li>
-                                      <li><a href="cart.html">Shopping cart</a></li>
-                                      <li><a href="checkout.html">Checkout</a></li>
-                                      <li><a href="wishlist.html">Wishlist</a></li>
-                                  </ul>
-                              </li>
-                              <li class="sidemenu-items">
-                                  <a class="has-arrow" aria-expanded="false" href="javascript:void(0);">Pages </a>
-                                  <ul aria-expanded="false">
-                                    <li><a href="about.html">About Page</a></li>
-                                    <li><a href="single-product.html">Product Details</a></li>
-                                    <li><a href="cart.html">Shopping cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                  </ul>
-                              </li>
-                              <li class="sidemenu-items">
-                                  <a class="has-arrow" aria-expanded="false" href="javascript:void(0);">Blog</a>
-                                  <ul aria-expanded="false">
-                                      <li><a href="blog.html">Blog</a></li>
-                                      <li><a href="blog-details.html">Blog Details</a></li>
-                                  </ul>
-                              </li>
-                              <li><a href="contact.html">Contact</a></li>
+                              <li class="@yield('home')"><a href="{{ route('/') }}">Home</a></li>
+                              <li class="@yield('about')"><a href="{{ route('about') }}">About</a></li>
+                              <li class="@yield('shope')"><a href="{{ route('shope') }}">Shope</a></li>
+
+                              <li class="@yield('contact')"><a href="{{ route('contact') }}">Contact</a></li>
                           </ul>
                       </div>
                   </div>
@@ -243,11 +185,10 @@
                     <div class="col-lg-12 col-12">
                         <div class="footer-top-text text-center">
                             <ul>
-                                <li><a href="home.html">home</a></li>
-                                <li><a href="#">our story</a></li>
-                                <li><a href="#">feed shop</a></li>
-                                <li><a href="blog.html">how to eat blog</a></li>
-                                <li><a href="contact.html">contact</a></li>
+                                <li><a href="{{ route('home') }}">home</a></li>
+                                <li><a href="{{ route('about') }}">our story</a></li>
+                                <li><a href="{{ route('shope') }}">feed shop</a></li>
+                                <li><a href="{{ route('contact') }}">contact</a></li>
                             </ul>
                         </div>
                     </div>

@@ -1,3 +1,9 @@
+@section('cart')
+    active
+@endsection
+@section('title')
+   Cart
+@endsection
 @extends('layouts.frontend_app')
 @section('frontend_content')
      <!-- .breadcumb-area start -->
@@ -32,6 +38,11 @@
                                     {{ session('remove_status') }}
                                 </div>
                             @endif
+                            @if (session('slect_produt'))
+                                <div class="alert alert-warning">
+                                    {{ session('slect_produt') }}
+                                </div>
+                            @endif
                             @if (session('updated_status'))
                                 <div class="alert alert-success">
                                     {{ session('updated_status') }}
@@ -42,6 +53,11 @@
                                     {{ session('purchase_status') }}
                                 </div>
                             @endif
+                            @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                             <thead>
                                 <tr>
                                     <th class="images">Image</th>
@@ -88,7 +104,7 @@
                                             <button type="sbmit">Update Cart</button>
                                         </li>
                                     </form>
-                                        <li><a href="shop.html">Continue Shopping</a></li>
+                                        <li><a href="">Continue Shopping</a></li>
                                     </ul>
                                     {{-- <h3>Cupon</h3>
                                     <p>Enter Your Cupon Code if You Have One</p>
@@ -96,6 +112,9 @@
                                         <input type="text" placeholder="Cupon Code">
                                         <button>Apply Cupon</button>
                                     </div> --}}
+                                    @php
+                                    session(['total_amount' => $subtotal ]);
+                                @endphp
                                 </div>
                             </div>
                             <div class="col-xl-3 offset-xl-5 col-lg-4 offset-lg-3 col-md-6">

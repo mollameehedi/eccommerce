@@ -22,7 +22,15 @@ class CheckoutController extends Controller
 
 
    public function index(){
-       return view('frontend.checkout');
+    if (session('total_amount') === 0) {
+
+        return back()->with('slect_produt', 'Please Select a product');
+    }
+    else{
+        return view('frontend.checkout');
+
+    }
+
    }
    public function store(Request $request){
     if ($request->shipping_status == 1) {
@@ -83,7 +91,7 @@ class CheckoutController extends Controller
         'created_at' => Carbon::now()
        ]);
     //    cart item deleted
-    //    $cart_item->forceDelete();
+       $cart_item->forceDelete();
 };
 
 $order_detail = Order_detail::where('order_id',$order_id)->get();

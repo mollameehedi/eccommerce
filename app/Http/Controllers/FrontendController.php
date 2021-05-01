@@ -24,7 +24,14 @@ class FrontendController extends Controller
        ]);
    }
    public function about(){
-       return view('frontend.about');
+       return view('frontend.about',[
+        'products' => Product::get(),
+       ]);
+   }
+   public function shop(){
+       return view('frontend.shop',[
+        'products' => Product::get(),
+       ]);
    }
    public function productdetails($slug_link){
        return view('frontend.productdetails',[
@@ -43,6 +50,12 @@ class FrontendController extends Controller
    }
 
    public function contactstore(Request $request, Contactmessage $Contactmessage){
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'subject' => 'required',
+        'message' => 'required',
+       ]);
     $Contactmessage->insert($request->except('_token') + [
         "created_at" => Carbon::now(),
     ]);
